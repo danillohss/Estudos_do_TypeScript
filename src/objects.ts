@@ -12,13 +12,17 @@ type User = {
     email: string,
     password?: string
     orders: Order[],
+    register(): string;
 };
 
 const user: User = {
     firstName: 'John',
     age: 22,
     email: 'john@example.com',
-    orders: [{ productId: '1', price: 200 }]
+    orders: [{ productId: '1', price: 200 }],
+    register() {
+        return 'Sou uma string';
+    }
 }
 
 const printlog = (message?: string) => { }
@@ -35,18 +39,25 @@ const author: Author & User = {
     email: 'john@example.com',
     firstName: 'John',
     password: 'password',
-    orders: []
+    orders: [],
+    register() {
+        return 'Sou uma string';
+    }
 }
 
 //Interfaces
 interface UserInterface {
-    firstName: string,
+    readonly firstName: string,
     email: string,
+    login(): string
 }
 
 const emailUser: UserInterface = {
     email: 'john@example',
     firstName: 'John',
+    login() {
+        return 'Sou uma string';
+    }
 }
 
 interface AuthorInterface {
@@ -57,6 +68,9 @@ const newAuthor: UserInterface & AuthorInterface = {
     books: ['4'],
     email: 'john@example',
     firstName: 'John',
+    login() {
+        return 'Sou uma string';
+    }
 }
 
 type Grade = number | string
